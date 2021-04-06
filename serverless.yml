@@ -1,5 +1,8 @@
 service: aws-serverless-nodejs-honeycomb-otel
 
+plugins:
+  - serverless-pseudo-parameters
+
 frameworkVersion: '2'
 
 provider:
@@ -11,3 +14,7 @@ provider:
 functions:
   hello:
     handler: handler.hello
+    layers:
+      - arn:aws:lambda:#{AWS::Region}:702835727665:layer:honeycomb-lambda-extension:6
+    environment:
+      LIBHONEY_API_KEY: ${ssm:/service/demo-lambda-honeycomb/honeycomb/apikey}
