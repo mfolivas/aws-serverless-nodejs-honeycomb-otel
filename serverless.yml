@@ -10,6 +10,9 @@ provider:
   runtime: nodejs12.x
   lambdaHashingVersion: 20201221
 
+  stage: ${opt:stage, 'dev'}
+
+
   tracing: true
   iamRoleStatements:
     - Effect: Allow # xray permissions (required)
@@ -27,3 +30,4 @@ functions:
       - arn:aws:lambda:#{AWS::Region}:702835727665:layer:honeycomb-lambda-extension:6
     environment:
       LIBHONEY_API_KEY: ${ssm:/service/demo-lambda-honeycomb/honeycomb/apikey}
+      LIBHONEY_DATASET: ${self:provider.stage}
