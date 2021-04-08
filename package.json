@@ -17,6 +17,10 @@
   },
   "homepage": "https://github.com/mfolivas/aws-serverless-nodejs-honeycomb-otel#readme",
   "dependencies": {
+    "aws-xray-sdk": "^3.2.0",
     "serverless-pseudo-parameters": "^2.5.0"
+  },
+  "devDependencies": {
+    "aws-sdk": "^2.881.0"
   }
 }
